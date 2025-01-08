@@ -117,8 +117,14 @@ public class Network {
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
         User mostpop = new User("");
-        for(int i = 0; i < this.getUserCount(); i++){
-            if(followeeCount(users[i].getName()) >= followeeCount(mostpop.getName())){
+        if(users.length==0){
+            return null;
+        }
+        for(int i = 0; i < users.length; i++){
+            if(users[i] == null){
+                continue;
+            }
+            if(followeeCount(users[i].getName()) > followeeCount(mostpop.getName())){
                 mostpop = users[i];
             }
         }
