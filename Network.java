@@ -74,6 +74,9 @@ public class Network {
         if(getUser(name2) != null && getUser(name1) != null){
             boolean name1exists = false;
             boolean name2exists = false;
+            if(name1.equals(name2)){
+                return false;
+            }
             for(int i = 0; i < users.length; i ++){
                 if(users[i] != null){
                     if(users[i].getName().equals(name1)){
@@ -95,11 +98,14 @@ public class Network {
     /** For the user with the given name, recommends another user to follow. The recommended user is
      *  the user that has the maximal mutual number of followees as the user with the given name. */
     public String recommendWhoToFollow(String name) {
+        if(userCount == 0){
+            return null;
+        }
         User check = this.getUser(name);
         User mostmut = new User("");
         for(int i = 0; i < this.getUserCount(); i ++){
             if(!users[i].getName().equals(name)){
-                if(check.countMutual(mostmut) <= check.countMutual(users[i])){
+                if(check.countMutual(mostmut) < check.countMutual(users[i])){
                     mostmut = users[i];
                 }
             }
