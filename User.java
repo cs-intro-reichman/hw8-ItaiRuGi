@@ -44,17 +44,41 @@
    
 
     /** If this user follows the given name, returns true; otherwise returns false. */
+   
     public boolean follows(String name) {
+        // Check if the follows array is null to avoid NullPointerException
+        if (follows == null) {
+            return false;
+        }
+    
+        // Iterate through the follows array
+        for (int i = 0; i < follows.length; i++) {
+            // Skip null entries in the array
+            if (follows[i] == null) {
+                continue;
+            }
+    
+            // Check if the current element matches the name
+            if (follows[i].equals(name)) {
+                return true;
+            }
+        }
+    
+       
+        return false;
+    }
+    /*  public boolean follows(String name) {
         for(int i = 0; i < 10; i++){
             if(follows[i] == null){
                 continue;
             }
-            if(follows[i].equals(name)){
+            if(this.follows[i].equals(name)){
                 return true;
             }
         }
         return false;
     }
+    */
     /** Makes this user follow the given name. If successful, returns true. 
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
