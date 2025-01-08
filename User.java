@@ -101,7 +101,7 @@
         String[] temp = new String[maxfCount];
         for(int i = 0; i < 10; i++){
             if(follows[i] == null){
-                return false;
+                continue;
             }
             if(follows[i].equals(name)){
                 for(int j = 0; j < 10; j++){
@@ -117,6 +117,7 @@
                     }
                 }
                 follows = temp; 
+                fCount --;
                 return true;
             }
         }
