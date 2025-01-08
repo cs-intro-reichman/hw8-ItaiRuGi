@@ -22,7 +22,7 @@
         this(name);
         follows[0] = "Foo";
         follows[1] = "Bar";
-        follows[2] = "Baz";
+        follows[3] = "Baz";
         fCount = 3;
     }
 
@@ -52,15 +52,13 @@
         }
     
         // Iterate through the follows array
-        for (int i = 0; i <= follows.length; i++) {
+        for (int i = 0; i < follows.length; i++) {
             // Skip null entries in the array
             if (follows[i] != null) {
                 if (follows[i].equals(name)) {
                     return true;
                 }
             }
-    
-            // Check if the current element matches the name
             
         }
     
