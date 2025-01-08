@@ -52,16 +52,16 @@
         }
     
         // Iterate through the follows array
-        for (int i = 0; i < follows.length; i++) {
+        for (int i = 0; i <= follows.length; i++) {
             // Skip null entries in the array
-            if (follows[i] == null) {
-                continue;
+            if (follows[i] != null) {
+                if (follows[i].equals(name)) {
+                    return true;
+                }
             }
     
             // Check if the current element matches the name
-            if (follows[i].equals(name)) {
-                return true;
-            }
+            
         }
     
        
