@@ -46,6 +46,9 @@ public class Network {
             return false;
         }
         for(int i = 0; i < users.length; i++){
+            if(users[i] == null){
+                continue;
+            }
             if(users[i].getName().equals(name)){
                 return false;
             }
@@ -59,10 +62,7 @@ public class Network {
             }
         }
         
-        User person = new User(name);
-        users[userCount] = person;
-        userCount ++;
-        return true;
+        return false;
         
     }
     
@@ -72,11 +72,23 @@ public class Network {
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
         if(getUser(name2) != null && getUser(name1) != null){
-            if(getUser(name1).follows(name2) == false){
-                getUser(name1).addFollowee(name2);
-                return true;
-            }
+            boolean name1exists = false;
+            boolean name2exists = false;
+            for(int i = 0; i < users.length; i ++){
+                if(users[i] != null){
+                    if(users[i].getName().equals(name1)){
+                        name1exists = true;
+                    }
+                    if(users[i].getName().equals(name2)){
+                        name2exists = true;
+                    }
+                }
+            }    
+                if(name1exists && name2exists){
+                    return getUser(name1).addFollowee(name2);
         }
+        }
+        
         return false;
     }
     
