@@ -47,7 +47,7 @@
     public boolean follows(String name) {
         for(int i = 0; i < 10; i++){
             if(follows[i] == null){
-                return false;
+                continue;
             }
             if(follows[i].equals(name)){
                 return true;
