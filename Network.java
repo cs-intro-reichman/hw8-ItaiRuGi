@@ -117,7 +117,7 @@ public class Network {
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
         User mostpop = new User("");
-        if(users.length==0){
+        if(users.length==0 || userCount == 0){
             return null;
         }
         for(int i = 0; i < users.length; i++){
